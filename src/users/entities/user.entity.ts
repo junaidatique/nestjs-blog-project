@@ -7,6 +7,12 @@ export class UserEntity {
   id: string;
 
   @Column()
+  created_at?: Date;
+
+  @Column()
+  updated_at?: Date;
+
+  @Column()
   fullName: string;
 
   @Column({ unique: true })
