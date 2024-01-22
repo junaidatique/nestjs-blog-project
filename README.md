@@ -1,73 +1,88 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Blog Engine
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This example Blog engine implements the following functionality
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## User Authentication and Authorization:
+- Secure user authentication and authorization for all actions.
 
-## Description
+## User Roles:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- Admin: Has full access to all features, including managing users, posts, categories, and tags.
+- Author: Can create, edit, and delete their own blog posts. Can view and manage their own comments.
+- Moderator: Can manage comments across all blog posts. Can edit or delete inappropriate comments.
+- Registered User: Can view and comment on blog posts.
+- Guest: Can view blog posts but cannot comment without registering.
 
-## Installation
+## Blog Post Management:
 
-```bash
-$ npm install
-```
+- Create a new blog post with a title, content, and optional featured image.
+- Edit existing blog posts, including modifying content, title, featured image, categories, and tags.
+- Delete blog posts, with appropriate confirmation prompts and permissions.
+- View a list of all blog posts with pagination support.
+- Filter blog posts by categories and tags.
 
-## Running the app
+## Image Upload:
 
-```bash
-# development
-$ npm run start
+- Users, especially authors, should be able to upload images to be used in their blog posts.
+- Implement a feature to attach images directly within the blog post editor.
+- Support common image formats (e.g., JPEG, PNG, GIF).
+- Validate and sanitize uploaded images to prevent security vulnerabilities.
 
-# watch mode
-$ npm run start:dev
+## Amazon S3 Integration:
 
-# production mode
-$ npm run start:prod
-```
+- Integrate the application with Amazon S3 for storing and serving uploaded images.
+- Utilize appropriate AWS SDKs or libraries for Node.js to interact with S3.
+- Store images in a secure and well-organized structure within the S3 bucket.
 
-## Test
+## Image Management:
 
-```bash
-# unit tests
-$ npm run test
+- Allow users to view and manage their uploaded images.
+- Provide options to delete or replace images attached to a blog post.
+- Implement image resizing and optimization to ensure optimal performance.
 
-# e2e tests
-$ npm run test:e2e
+## Image Thumbnails:
 
-# test coverage
-$ npm run test:cov
-```
+- Generate and store thumbnails for uploaded images to improve page loading times.
+- Use the thumbnails for image previews in the blog post editor.
 
-## Support
+## Image Embedding in Blog Posts:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- Allow authors to embed uploaded images directly within their blog posts.
+- Provide an intuitive way for authors to insert images into the post content.
 
-## Stay in touch
+## Image Metadata:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Store relevant metadata for each uploaded image, such as upload date, owner, and usage in blog posts.
+- Display image metadata to users in the image management interface.
 
-## License
+## User Permissions for Image Management:
 
-Nest is [MIT licensed](LICENSE).
+- Set permissions to control who can manage and delete images, especially for images attached to blog posts.
+
+## Quota and Usage Tracking:
+
+- Implement a system to track and manage user quotas for image storage.
+- Notify users when they approach or exceed their allocated storage limits.
+
+## Categories and Tags:
+
+- Create, edit, and delete blog categories.
+- Assign one or more categories to each blog post.
+- Create, edit, and delete tags.
+- Assign multiple tags to each blog post.
+
+## User Comments:
+
+- Allow registered users and guests to leave comments on blog posts.
+- Users can edit and delete their own comments.
+- Moderators can edit and delete any comments.
+- Implement a spam filter or moderation system to prevent inappropriate comments.
+
+## User Profiles:
+
+- Registered users have profiles displaying their username, profile picture, and a list of their authored blog posts.
+- Admins can view and manage user profiles.
+
+## Search Functionality:
+
+- Implement a search feature to find blog posts based on keywords, categories, tags, or author names.
