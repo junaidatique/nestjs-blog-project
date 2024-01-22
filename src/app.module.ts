@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { UserEntity } from './users/entities/user.entity';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { AuthModule } from './auth/auth.module';
         autoLoadEntities: false,
         synchronize: false,
         logging: configService.get('APP_ENV') === 'local' ? true : false,
-        entities: [],
+        entities: [UserEntity],
       }),
     }),
     UsersModule,

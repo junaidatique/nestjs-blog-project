@@ -5,10 +5,10 @@ export class Migrations1705755513138 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `ALTER TABLE "users" ADD "created_at" TIMESTAMP NOT NULL`,
+      `ALTER TABLE "users" ADD "created_at" TIMESTAMP NOT NULL DEFAULT NOW()`,
     );
     await queryRunner.query(
-      `ALTER TABLE "users" ADD "updated_at" TIMESTAMP NOT NULL`,
+      `ALTER TABLE "users" ADD "updated_at" TIMESTAMP NOT NULL DEFAULT NOW()`,
     );
   }
 
