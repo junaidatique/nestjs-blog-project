@@ -9,7 +9,7 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
-import { UserResponseDto } from 'src/users/dto/userResponse.dto';
+import { UserDetailDto } from 'src/users/dto/userDetail.dto';
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -23,7 +23,7 @@ export class AuthController {
   @Post('register')
   async register(
     @Body(ValidationPipe) registrationDto: RegisterDto,
-  ): Promise<UserResponseDto> {
+  ): Promise<UserDetailDto> {
     return this.authService.register(registrationDto);
   }
 }

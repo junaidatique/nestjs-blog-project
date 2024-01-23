@@ -6,6 +6,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { UserEntity } from './users/entities/user.entity';
+import { CategoriesModule } from './categories/categories.module';
+import { CategoryEntity } from './categories/entities/category.entity';
+import { TagsModule } from './tags/tags.module';
+import { PostsModule } from './posts/posts.module';
+import { TagEntity } from './tags/entities/tag.entity';
+import { PostEntity } from './posts/entities/post.entity';
 
 @Module({
   imports: [
@@ -22,11 +28,14 @@ import { UserEntity } from './users/entities/user.entity';
         autoLoadEntities: false,
         synchronize: false,
         logging: configService.get('APP_ENV') === 'local' ? true : false,
-        entities: [UserEntity],
+        entities: [UserEntity, CategoryEntity, TagEntity, PostEntity],
       }),
     }),
     UsersModule,
     AuthModule,
+    CategoriesModule,
+    TagsModule,
+    PostsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

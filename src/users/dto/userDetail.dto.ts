@@ -1,6 +1,6 @@
 import { UserEntity } from '../entities/user.entity';
 
-export class UserResponseDto {
+export class UserDetailDto {
   id?: string;
   fullName?: string;
   email?: string;
@@ -9,7 +9,7 @@ export class UserResponseDto {
   udpated_at?: string;
 
   fromDb(userRecord: UserEntity) {
-    const dto = new UserResponseDto();
+    const dto = new UserDetailDto();
     dto.id = userRecord.id;
     dto.email = userRecord.email;
     dto.fullName = userRecord.fullName;

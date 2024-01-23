@@ -4,8 +4,8 @@ import { ConfigService } from '@nestjs/config';
 import { config } from 'dotenv';
 config();
 const configService = new ConfigService();
-import { Migrations1705755098825 } from './1705755098825-migrations';
-import { Migrations1705755513138 } from './1705755513138-migrations';
+// import { Migrations1705755098825 } from './1705755098825-migrations';
+// import { Migrations1705755513138 } from './1705755513138-migrations';
 
 export default new DataSource({
   type: 'postgres',
@@ -16,6 +16,9 @@ export default new DataSource({
   database: configService.get('DB_NAME'),
   synchronize: false,
   logging: true,
-  entities: [],
-  migrations: [Migrations1705755098825, Migrations1705755513138],
+  // entities: [],
+  entities: ['src/**/*.entity{.ts,.ts}'],
+  migrations: ['src/migrations/*-migrations.ts'],
+  // migrations: [],
+  // migrations: [Migrations1705755098825, Migrations1705755513138],
 });

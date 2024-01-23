@@ -5,8 +5,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   Unique,
+  OneToMany,
+  JoinTable,
 } from 'typeorm';
 import { USER_ROLES } from '../enums/user_roles.enum';
+import { CategoryEntity } from '../../categories/entities/category.entity';
 
 @Entity('users')
 @Unique(['email'])
@@ -37,6 +40,9 @@ export class UserEntity {
   @Column()
   password: string;
 
-  @Column({ default: USER_ROLES.BLOGGER }) // Default role is blogger
+  @Column({ default: USER_ROLES.MODERATOR })
   role: string;
+
+  @OneToMany(() => CategoryEntity, (photo) => photo.user)
+  categories: CategoryEntity[];
 }
