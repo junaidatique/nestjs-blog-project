@@ -1,4 +1,4 @@
-// src/users/users.service.ts
+// Handles user data access and creation
 
 import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
