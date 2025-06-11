@@ -4,7 +4,7 @@ import { UpdateCategoryDto } from './dto/update-category.dto';
 import { CategoryEntity } from './entities/category.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CategoryResponseDto } from './dto/categoryResposne.dto';
+import { CategoryResponseDto } from './dto/categoryResponse.dto';
 import { UserDetailDto } from 'src/users/dto/userDetail.dto';
 
 @Injectable()
